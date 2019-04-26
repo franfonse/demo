@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Homepage</title>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+<h2>Login:</h2>
+
+<form action="#" th:action="@{/login}" th:object="${prop}" method="post">
+<p>Ingrese ID de propietario: <input type="text" name="idpropietario"/></p>
+<input type="submit" value="LOGIN"/>
+</form>
+
+</body>
+
+</html>

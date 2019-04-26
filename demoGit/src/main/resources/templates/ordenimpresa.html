@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+<meta charset="UTF-8">
+<title>Orden Impresa</title>
+
+</head>
+
+<body>
+
+<div>
+
+<h3 th:text="'ID Orden: ' + ${orden.getIdorden()}"></h3>
+<h3 th:text="'Nombre del propietario: ' + ${orden.getPropietario().getNombre()}"></h3>
+
+<table>
+
+<tr>
+
+<th>ID Repuesto</th>
+<th>Imagen</th>
+<th>Descripcion</th>
+<th>Costo por unidad</th>
+<th>Cantidad</th>
+
+</tr>
+
+<tr th:each="rde: ${listaRepDetalles}">
+
+<td th:text="${rde.getRepuesto().getIdrepuesto()}"></td>
+<td><img src="#" th:src="@{${rde.getRepuesto().getUrl()}}" width="85" height="80"/></td>
+<td th:text="${rde.getRepuesto().getDescripcion()}"></td>
+<td th:text="${rde.getRepuesto().getCosto()}"></td>
+<td th:text="${rde.getQty()}"></td>
+
+</tr>
+
+</table>
+
+<p th:text="'Costo total: ' + *{total}"></p>
+
+</div>
+
+</body>
+
+</html>

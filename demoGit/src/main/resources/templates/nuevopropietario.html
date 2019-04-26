@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Nuevo Propietario</title>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+<h2>Crear un nuevo propietario:</h2>
+
+<form action="#" th:action="@{/nuevoPropietario}" th:object="${nueProp}" method="post">
+<p>Nombre: <input type="text" name="nombre"/></p>
+<p>Apellido: <input type="text" name="apellido"/></p>
+<p>Email: <input type="text" name="email"/></p>
+<input type="submit" value="CREAR"/>
+</form>
+
+</body>
+
+</html>

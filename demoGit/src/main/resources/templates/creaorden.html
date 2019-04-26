@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Crear Orden</title>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+<h2>Crear una Orden:</h2>
+
+<form action="#" th:action="@{/crearOrden}" th:object="${orden}" method="post">
+<p>Confirmar ID de propietario: <input type="text" name="idpropietario"/></p>
+<p>Marca: <input type="text" name="marca"/></p>
+<p>Patente: <input type="text" name="patente"/></p>
+<p>Detalles: <input type="text" name="detalle"/></p>
+<input type="submit" value="CREAR"/>
+</form>
+
+
+
+</body>
+
+</html>

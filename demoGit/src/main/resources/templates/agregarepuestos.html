@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Agregar Repuestos</title>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+<meta charset="UTF-8">
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<h2>Repuestos disponibles</h2>
+	
+
+	<table class="table table-bordered">
+
+
+		<tr>
+			<th>ID Repuesto</th>
+			<th>Imagen</th>
+			<th>Descripcion del repuesto</th>
+			<th>Costo por unidad</th>
+		</tr>
+
+		<tr th:each="rep: ${listaRepuestos}">
+		
+			<td th:text="${rep.getIdrepuesto()}"></td>
+			<td><img src="#" th:src="@{ ${rep.getUrl()}}" width="80" height="80"/></td>
+			<td th:text="${rep.getDescripcion()}"></td>
+			<td th:text="${rep.getCosto()}"></td>
+			
+		</tr>
+
+	</table>
+	
+	</div>
+	
+	<div class="container">
+	
+	<h2>Agregue repuesto/s a la orden</h2>
+	
+	<form action="#" th:action="@{/agregarRepuestos}" th:object="${orden}" method="post">
+	
+	<div class="form-group">
+	<p th:text="'El ID de la orden es: ' + *{idorden}"></p><input type="hidden" th:field="*{idorden}"/>
+	</div>
+	<div class="form-group">
+	<p>ID Repuesto: <input type="text" name="idrepuesto"/></p>
+	</div>
+	<div class="form-group">
+	<p>Cantidad: <input type="text" name="qty"/></p>
+	</div>
+	<div class="form-group">
+	<p>Horas de trabajo: <input type="text" name="horas"/></p>
+	</div>
+	<div class="form-group">
+	<input type="submit" class="btn btn-primary" value="Agregar"/>
+	</div>
+	
+	</form>
+	
+	</div>
+	
+	<div class="container">
+	
+	<h2>Repuestos agregados</h2>
+	
+	<table class="table table-bordered">
+	
+	<tr>
+	<th>ID Repuesto</th>
+	<th>Descripcion</th>
+	<th>Cantidad</th>
+	<th>Costo de repuesto/s</th>
+	<!-- <th>Precio por horas de trabajo</th> -->
+	</tr>
+	
+	<tr th:each="rde: ${listaRepDetalles}">
+	<td th:text="${rde.getRepuesto().getIdrepuesto()}"></td>
+	<td th:text="${rde.getRepuesto().getDescripcion()}"></td>
+	<td th:text="${rde.getQty()}"></td>
+	<td th:text="${rde.getRepuesto().getCosto()}"></td>
+	<!-- <td th:text="*{}"></td> -->
+	</tr>
+	
+	</table>
+	
+	<a th:href="@{/imprimirOrden(idorden=${orden.getIdorden()})}">Imprimir orden</a>
+	
+	</div>
+
+	
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+<meta charset="UTF-8">
+<title>Lista Ordenes</title>
+
+</head>
+
+<body>
+
+<h2>Ordenes:</h2>
+
+<table>
+
+<tr>
+<th>Nombre propietario</th>
+<th>Número de orden</th>
+</tr>
+
+<tr th:each="ord: ${listaOrdenes}">
+<td th:text="${ord.getPropietario().getNombre()}"></td>
+<td th:text="${ord.getIdorden()}"></td>
+<td><a th:href="@{/agregarRepOrden(idorden=${ord.getIdorden()})}">Agregar productos a la orden</a></td>
+
+</tr>
+
+</table>
+
+<br>
+<hr>
+<br>
+
+<form action="#" th:action="@{/irACrearOrden}" th:object="${orden}" method="get">
+<p>O crear una nueva orden:</p>
+<input type="submit" value="CREAR ORDEN"/>
+</form>
+
+
+
+</body>
+
+</html>
